@@ -1,34 +1,39 @@
 <div class="col s12 m7">
     <div class="card horizontal">
-      <div class="card-image">
-      </div>
-      <div class="card-stacked">
-        <div class="card-content">
-            <h3>{{question.Qn}}</h3>
-            <img *ngIf="hasImage" src="{{question.ImageName}}" alt="Image">
-            <p *ngFor="let option of question.Options;let i = index">
-                <label for="question{{question.QnID}}option{{i}}">
-                    <input class="with-gap" [(ngModel)]="answerSelected" type="radio" name="question{{question.QnID}}"  value="{{i}}" id="question{{question.QnID}}option{{i}}"  />
-                    <span>{{option}}</span>
-                </label>
-            </p>
-            
-            
-   
+        <div class="card-image">
         </div>
-        <div class="card-action">
-            <div class="row">
-                <div class="col">
-                    <button class="purple btn" (click)="answerQuestion()">Save Answer</button>
+        <div class="card-stacked">
+            <div class="card-content">
+                <p class="small white" *ngIf="isAnswered()"> <span class="badge ">
+                        Answered
+                    </span>
+                </p>
 
-                </div>
-                <div class="col">
-                    <button class="btn green" (click)="answerQuestion()">Next Question</button>
-                </div>
+                <h3>{{question.Qn}}</h3>
+                <img *ngIf="hasImage()" src="{{question.ImageName}}" alt="Image">
+                <p *ngFor="let option of question.Options;let i = index">
+                    <label for="question{{question.QnID}}option{{i}}">
+                        <input class="with-gap" [(ngModel)]="answerSelected" type="radio"
+                            name="question{{question.QnID}}" value="{{i}}" id="question{{question.QnID}}option{{i}}" />
+                        <span>{{option}}</span>
+
+                    </label>
+                </p>
+
+
 
             </div>
-        </div>
-      </div>
-    </div>
-  </div>
+            <div class="card-action">
+                <div class="row">
+                    <div class="col">
+                        <button class="green btn" (click)="answerQuestion()">Save Answer</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn purple" (click)="nextQuestion()">Next Question</button>
+                    </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

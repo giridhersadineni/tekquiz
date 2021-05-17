@@ -3,21 +3,29 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { ResultComponent } from './result/result.component';
-import { from } from 'rxjs';
 import { LoginComponent } from './login/login.component';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
 import {AdminComponent } from './admin/admin.component'
 import { ParticipantsComponent } from './participants/participants.component';
 import { ManagequizComponent } from './managequiz/managequiz.component';
 import { ManagequestionsComponent } from './managequestions/managequestions.component';
+import { FinishQuizComponent } from './finish-quiz/finish-quiz.component';
+import { QuestionComponent } from './question/question.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
-  { path: 'quiz', component: QuizComponent },
+  { path: 'quiz',component:QuizComponent,
+    children:[
+      {path:'question/:questionid',component:QuestionComponent},
+    ]
+
+  },
   { path: 'result', component: ResultComponent },
   { path: 'login',component:LoginComponent },
+  { path: 'finishquiz',component:FinishQuizComponent },
   { path: 'dashboard',component:UserdashboardComponent },
-  { path: '', redirectTo: 'quiz' , pathMatch:'full' }
+  { path:'quiz/<questionid>',component:QuestionComponent},
+  { path: '', redirectTo: 'dashboard' , pathMatch:'full' }
 
 ];
 

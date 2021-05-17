@@ -18,6 +18,7 @@ import { UserdashboardComponent } from './userdashboard/userdashboard.component'
 import { ParticipantsComponent } from './participants/participants.component';
 import { ManagequizComponent } from './managequiz/managequiz.component';
 import { ManagequestionsComponent } from './managequestions/managequestions.component';
+import { FinishQuizComponent } from './finish-quiz/finish-quiz.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { ManagequestionsComponent } from './managequestions/managequestions.comp
     UserdashboardComponent,
     ParticipantsComponent,
     ManagequizComponent,
-    ManagequestionsComponent
+    ManagequestionsComponent,
+    FinishQuizComponent
   ],
   imports: [
     BrowserModule,
