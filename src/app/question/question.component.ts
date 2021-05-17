@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-question',
@@ -7,9 +7,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionComponent implements OnInit {
 
-  constructor() { }
+  @Input() question:any;
+ 
+  public answerSelected:Number;
+  constructor() { 
+    this.answerSelected=0
+  }
+
+  hasImage(){
+    if (this.question.ImageName===null){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
 
   ngOnInit(): void {
+    
   }
+
+  answerQuestion(){
+    
+  }
+  
 
 }

@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "4d7fe5af-ec75-4af0-bbca-0629c824b7af"
+    "analytics": "bec7b520-2971-4003-9cc2-e64fdbd029d9"
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "QuizApp": {
+    "TekQuiz": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/QuizApp",
+            "outputPath": "dist/TekQuiz",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -31,13 +31,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -72,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "QuizApp:build"
+            "browserTarget": "TekQuiz:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "QuizApp:build:production"
+              "browserTarget": "TekQuiz:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "QuizApp:build"
+            "browserTarget": "TekQuiz:build"
           }
         },
         "test": {
@@ -120,16 +116,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "QuizApp:serve"
+            "devServerTarget": "TekQuiz:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "QuizApp:serve:production"
+              "devServerTarget": "TekQuiz:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "QuizApp"
+  "defaultProject": "TekQuiz"
 }

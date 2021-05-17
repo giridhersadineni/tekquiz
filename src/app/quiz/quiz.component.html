@@ -1,1 +1,9 @@
-<p>quiz works!</p>
+
+<app-navbar></app-navbar>
+<h1>Quiz Title </h1>
+
+<h4>Time Remaining</h4>
+
+<div *ngFor="let question of questions">
+    <app-question [question]="question"></app-question>
+</div>
