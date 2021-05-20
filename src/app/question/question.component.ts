@@ -53,10 +53,11 @@ export class QuestionComponent implements OnInit {
   }
 
   answerQuestion() {
-    if (this.answerSelected == 999) {
+    const ans = this.answerSelected;
+    if (ans === 999) {
       alert('Please Select an Answer');
     } else {
-      this.service.saveAnswer(this.question.QnID, this.answerSelected);
-    }
+      this.service.saveAnswer(this.question.QnID, ans);
+    } 
   }
 }

@@ -1,6 +1,7 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
 import { queueScheduler } from 'rxjs';
+import { ResultComponent } from './result/result.component';
 
 @Injectable({
   providedIn: 'root',
@@ -103,7 +104,7 @@ export class QuizService {
   public index:number;
   public totalQuestions=this.questions.length;
   public visitedQuestions=[];
-  public answers = [];
+  public answers = this.getAnswers();
 
   constructor() {
     this.index=0;
@@ -120,12 +121,12 @@ export class QuizService {
   }
 
   updateResponse(response:any){
-    let answer=this.answers.find((resp)=>resp.questionId === response.questionId);
-    if (answer===undefined){
-      this.answers.push(response);
+    let answer = this.answers.find((resp) => resp.questionId === response.questionId);
+    if (answer === undefined){
+      this.answers .push(response);
     }
     else{
-      answer.response=response.response;
+      answer.response = parseInt ( response.response );
     }
     console.log(this.answers);
     localStorage.setItem("responses",JSON.stringify(this.answers));
@@ -145,7 +146,7 @@ export class QuizService {
 
   saveAnswer(questionId: number, answer: number) {
     console.log("Hit Quiz Service");
-    const response = { questionId: 0, response: 0, correctAnswer: 0 };
+    const response = { questionId: 0,  response: 0 ,  correctAnswer : 0 };
     const question = this.questions.find(
       (question) => question.QnID === questionId
     );
@@ -203,16 +204,23 @@ export class QuizService {
 
 
    finalresult(){
-    let score=0;
-    this.answers.forEach( (q) => {
-      if (q.response==q.correctAnswer){
+    let result = {score: 0 , answeredQuestions : 0, totalquestions :0, correctanswers: 0 };
+    let score = 0;
+    let answers = this.getAnswers();
+    let correctanswers = 0;
+    answers.forEach( (q) => {
+      console.log(q);
+      if ( q.response == q.correctAnswer){
         score++;
+        correctanswers++;
       }
     });
-    console.log(score);
-    return { "score" : score };
-
+    result.score = score;
+    result.answeredQuestions = this.answers.length;
+    result.totalquestions = this.questions.length;
+    result.correctanswers = correctanswers;
+    console.log(result);
+    return result;
   }
-
 
 }

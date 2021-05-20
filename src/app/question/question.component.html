@@ -13,7 +13,7 @@
                 <img *ngIf="hasImage()" src="{{question.ImageName}}" alt="Image">
                 <p *ngFor="let option of question.Options;let i = index">
                     <label for="question{{question.QnID}}option{{i}}">
-                        <input class="with-gap" [(ngModel)]="answerSelected" type="radio"
+                        <input class="with-gap" [(ngModel)]="answerSelected" type="radio" 
                             name="question{{question.QnID}}" value="{{i}}" id="question{{question.QnID}}option{{i}}" />
                         <span>{{option}}</span>
 

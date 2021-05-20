@@ -9,12 +9,12 @@ import { QuizService } from '../quiz.service';
 export class FinishQuizComponent implements OnInit {
 
   constructor(private service:QuizService) { }
-  public result={};
+  public result;
   ngOnInit(): void {
-    this.result=this.service.finalresult();
+    this.result = this.service.finalresult();
   }
 
-  
+
  
 
 }
