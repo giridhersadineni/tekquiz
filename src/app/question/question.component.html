@@ -31,7 +31,11 @@
                     <div class="col">
                         <button class="btn purple" (click)="nextQuestion()">Next Question</button>
                     </div>
-
+                </div>
+                <div class="row" *ngIf="isAnswered()">
+                    <div class="col">
+                        <h5>Answer Saved</h5>
+                    </div>
                 </div>
             </div>
         </div>

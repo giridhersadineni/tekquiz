@@ -14,15 +14,13 @@ export class QuestionComponent implements OnInit {
 
   public questionid = 0;
   public answerSelected;
-  public savedAnswer={};
+  public savedAnswer = {};
 
-  
+
   constructor(private service: QuizService, private router: ActivatedRoute) {
     this.answerSelected = 999;
     this.savedAnswer = false;
     this.question = this.service.nextQuestion();
-    this.savedAnswer=this.service.answers.find(q=>q.QnID == this.questionid);
-  
   }
 
   hasImage() {
@@ -36,24 +34,22 @@ export class QuestionComponent implements OnInit {
   }
 
 
-  
+
+
   isAnswered() {
-    if (this.answerSelected != 999) {
-      // console.log("It has no Image");
-      return true;
-    } else {
-      // console.log("It has no Image");
-      return false;
-    }
+    return  this.service.questionAnswered(this.question.QnID);
   }
 
   ngOnInit(): void {
-    this.questionid = parseInt(this.router.snapshot.paramMap.get('questionid'));
-    this.question = this.service.getQuestion(this.questionid);
+    // this.questionid = parseInt(this.router.snapshot.paramMap.get('questionid'));
+    // this.question = this.service.getQuestion(this.questionid);
   }
+
+
 
   nextQuestion() {
     this.question = this.service.nextQuestion();
+    this.answerSelected = this.service.getSavedAnswer(this.question.QnID);
   }
 
   answerQuestion() {

@@ -1,5 +1,6 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
+import { queueScheduler } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -130,6 +131,18 @@ export class QuizService {
     localStorage.setItem("responses",JSON.stringify(this.answers));
   }
 
+  questionAnswered(questionId){
+    let answered = this.answers.find(question => question.questionId == questionId ) ;
+    if (answered === undefined){
+      return false ;
+    } 
+    else{
+      return true ;    
+    }
+  }
+
+
+
   saveAnswer(questionId: number, answer: number) {
     console.log("Hit Quiz Service");
     const response = { questionId: 0, response: 0, correctAnswer: 0 };
@@ -146,15 +159,23 @@ export class QuizService {
     }
   }
 
-  checkQuizAnswers(){
 
+
+  getSavedAnswer(questionId){
+    if(this.questionAnswered(questionId)){
+      return this.answers.find(question => question.QnID = questionId).response;
+    }
+    else{
+      return 999;
+    }
   }
 
+  
 
    getQuestion (questionId:any) {
     let qid=parseInt(questionId);   
     console.log(qid);
-    let question = this.questions.find(question=> question.QnID==qid);
+    let question = this.questions.find(question => question.QnID==qid);
       return question;
    }
   
@@ -170,16 +191,28 @@ export class QuizService {
 
 
    nextQuestion(){
-     if (this.index<this.questions.length){
+     if (this.index < this.questions.length){
        return this.questions[this.index++];
       }
       else{
-        this.index=0;
+        this.index = 0;
         return this.questions[this.index];
       }
 
    }
 
+
+   finalresult(){
+    let score=0;
+    this.answers.forEach( (q) => {
+      if (q.response==q.correctAnswer){
+        score++;
+      }
+    });
+    console.log(score);
+    return { "score" : score };
+
+  }
 
 
 }

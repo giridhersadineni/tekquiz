@@ -31,9 +31,9 @@ import {Subscription,interval} from 'rxjs';
   }
 
   tick(){
+    this.totalanswered=this.service.getTotalAnswered();
    if(this.time>0){
      this.time--;
-     console.log(this.time);
    }
    else if(this.time==0){
      this.subscription.unsubscribe();
