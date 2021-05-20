@@ -1,10 +1,16 @@
-<div class="card p-2">
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="card">
+     <div class="card-content">
 
-    <h3>Your Score {{result.score}}</h3>
-    <h4>No of Questions Attempted:  {{result.answeredQuestions}}</h4>
-    <h4>You have answered {{result.correctanswers}} correctly</h4>
-    <h4>Total Questions : {{result.totalquestions}}</h4>
-    <p>        <a routerLink="/" class="btn green"> Go Back</a>
-
-    </p>
+         <h3 class="card-title">Result</h3>
+         <p>Your have Scored {{ result.score }}</p>
+         <p>No of Questions Attempted: {{ result.answeredQuestions }}</p>
+         <p>You have answered {{ result.correctanswers }} correctly</p>
+         <p>Total Questions : {{ result.totalquestions }}</p>
+        </div> 
+        <div class="card-action">
+            <a routerLink="/" class="btn green"> Go Back</a>
+        </div>
+  </div>
 </div>
