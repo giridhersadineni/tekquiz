@@ -11,19 +11,16 @@ import { switchMap } from 'rxjs/operators';
 })
 export class QuestionComponent implements OnInit {
   @Input() question;
-
   public questionid = 0;
   public answerSelected;
   public savedAnswer = {};
-
-
   constructor(private service: QuizService, private router: ActivatedRoute) {
     this.answerSelected = 999;
     this.savedAnswer = false;
     this.question = this.service.nextQuestion();
   }
 
-  hasImage() {
+  hasImage(): boolean {
     if (this.question.ImageName == null) {
       // console.log("It has no Image");
       return false;
@@ -32,11 +29,7 @@ export class QuestionComponent implements OnInit {
       return true;
     }
   }
-
-
-
-
-  isAnswered() {
+  isAnswered(): boolean {
     return  this.service.questionAnswered(this.question.QnID);
   }
 
@@ -45,19 +38,17 @@ export class QuestionComponent implements OnInit {
     // this.question = this.service.getQuestion(this.questionid);
   }
 
-
-
-  nextQuestion() {
+  nextQuestion(): any {
     this.question = this.service.nextQuestion();
     this.answerSelected = this.service.getSavedAnswer(this.question.QnID);
   }
 
-  answerQuestion() {
+  answerQuestion(): void {
     const ans = this.answerSelected;
     if (ans === 999) {
       alert('Please Select an Answer');
     } else {
       this.service.saveAnswer(this.question.QnID, ans);
-    } 
+    }
   }
 }

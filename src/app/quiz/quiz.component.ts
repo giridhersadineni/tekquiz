@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../quiz.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, interval } from 'rxjs';
+import { Question } from '../question';
 
 @Component({
   selector: 'app-quiz',
@@ -13,23 +14,27 @@ export class QuizComponent implements OnInit {
   public questions: any = [];
   public totalquestions: number;
   public totalanswered: number;
-  public initialQuestion;
   public time: number;
   public timer;
   private subscription: Subscription;
+  public question;
 
   constructor(private service: QuizService, private route: ActivatedRoute, private router: Router) {
-    this.totalquestions = this.service.getTotalQuestions();
+    this.questions = this.service.getQuestions();
     this.totalanswered = this.service.getTotalAnswered();
-    this.initialQuestion = this.service.nextQuestion();
+    this.question = this.service.nextQuestion();
   }
-
+  
   ngOnInit(): void {
-    this.time = this.totalquestions * 1;
+    this.totalquestions = this.service.getTotalQuestions();
+    console.log(this.totalquestions);
+    this.time = this.service.totalQuestions * 60 + 100;
     this.subscription = interval(1000)
-      .subscribe(x => { this.tick(); });
-    this.initialQuestion = this.service.nextQuestion();
+    .subscribe(x => { this.tick(); });
+    this.question = this.service.nextQuestion();
   }
+  
+  
 
   tick() {
     this.totalanswered = this.service.getTotalAnswered();
@@ -40,7 +45,7 @@ export class QuizComponent implements OnInit {
       this.subscription.unsubscribe();
       clearInterval(this.timer);
       alert("Time Up");
-      this.router.navigate([ "finishquiz" ]);
+      // this.router.navigate([ "finishquiz" ]);
     }
   }
 

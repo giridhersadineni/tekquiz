@@ -19,6 +19,8 @@ import { ParticipantsComponent } from './participants/participants.component';
 import { ManagequizComponent } from './managequiz/managequiz.component';
 import { ManagequestionsComponent } from './managequestions/managequestions.component';
 import { FinishQuizComponent } from './finish-quiz/finish-quiz.component';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,8 @@ import { FinishQuizComponent } from './finish-quiz/finish-quiz.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [QuizService],
   bootstrap: [AppComponent]
