@@ -25,7 +25,7 @@ export class QuizService {
   // GET : api/questions
 
   fetchQuestions(): void {
-    const url = '/assets/data/questions.json';
+    const url = 'http://localhost:55265/api/questions';
     const q = this.http.get<any>(url);
     q.subscribe((data) => {
         this.questions = data;

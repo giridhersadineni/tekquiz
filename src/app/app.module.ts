@@ -15,11 +15,11 @@ import { FormsModule } from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
 import { AdminnavbarComponent } from './adminnavbar/adminnavbar.component';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
-import { ParticipantsComponent } from './participants/participants.component';
 import { ManagequizComponent } from './managequiz/managequiz.component';
 import { ManagequestionsComponent } from './managequestions/managequestions.component';
 import { FinishQuizComponent } from './finish-quiz/finish-quiz.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ParticipantComponent } from './participant/participant.component';
 
 @NgModule({
   declarations: [
@@ -33,10 +33,11 @@ import { HttpClientModule } from '@angular/common/http';
     AdminComponent,
     AdminnavbarComponent,
     UserdashboardComponent,
-    ParticipantsComponent,
     ManagequizComponent,
     ManagequestionsComponent,
-    FinishQuizComponent
+    FinishQuizComponent,
+    ParticipantComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,11 @@
+<div class="row">
+    <div class="col">
+        <button class="green btn" (click)="answerQuestion()">Save Answer</button>
+    </div>
+    <div class="col">
+        <button class="btn purple" (click)="nextQuestion()">Next Question</button>
+    </div>
+</div>
 <div class="col s12 m7">
     <div class="card horizontal">
         <div class="card-image">
@@ -23,21 +31,7 @@
 
 
             </div>
-            <div class="card-action">
-                <div class="row">
-                    <div class="col">
-                        <button class="green btn" (click)="answerQuestion()">Save Answer</button>
-                    </div>
-                    <div class="col">
-                        <button class="btn purple" (click)="nextQuestion()">Next Question</button>
-                    </div>
-                </div>
-                <div class="row" *ngIf="isAnswered()">
-                    <div class="col">
-                        <h5>Answer Saved</h5>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>

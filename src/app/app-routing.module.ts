@@ -6,12 +6,11 @@ import { ResultComponent } from './result/result.component';
 import { LoginComponent } from './login/login.component';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
 import {AdminComponent } from './admin/admin.component'
-import { ParticipantsComponent } from './participants/participants.component';
 import { ManagequizComponent } from './managequiz/managequiz.component';
 import { ManagequestionsComponent } from './managequestions/managequestions.component';
 import { FinishQuizComponent } from './finish-quiz/finish-quiz.component';
 import { QuestionComponent } from './question/question.component';
-
+import {ParticipantComponent} from './participant/participant.component';
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'quiz',component:QuizComponent,
@@ -31,7 +30,7 @@ const routes: Routes = [
 
 const adminRoutes:Routes=[
   { path: 'admin', component: AdminComponent },
-  { path: 'admin/participants', component: ParticipantsComponent },
+  { path: 'admin/participants', component: ParticipantComponent },
   { path: 'admin/quiz', component:ManagequizComponent  },
   { path: 'admin/questions', component: ManagequestionsComponent },
 ];

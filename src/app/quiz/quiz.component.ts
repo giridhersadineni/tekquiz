@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../quiz.service';
-import{ActivatedRoute} from '@angular/router';
+import{ActivatedRoute,Router} from '@angular/router';
 import {Subscription,interval} from 'rxjs';
 import {FormsModule} from '@angular/forms';
 import { Question } from '../question';
@@ -10,28 +10,6 @@ import { Question } from '../question';
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.css']
 })
-<<<<<<< HEAD
-  export class QuizComponent implements OnInit {
-  
-  public questions:any=[];
-  public totalquestions:number;
-  public totalanswered:number;
-  public question;
-  public time:number;
-  public timer; 
-  private subscription: Subscription;
-  constructor(private service:QuizService,private route:ActivatedRoute) { 
-    this.totalquestions=this.service.getTotalQuestions();
-    this.totalanswered=this.service.getTotalAnswered();
-    this.question=this.service.nextQuestion();
-  }
-  
-  ngOnInit(): void {
-    this.time=this.totalquestions*30-1;
-    this.subscription=interval(1000)
-    .subscribe(x=>{ this.tick(); });
-    this.question=this.service.nextQuestion();
-=======
 export class QuizComponent implements OnInit {
 
   public questions: any = [];
@@ -55,9 +33,12 @@ export class QuizComponent implements OnInit {
     this.subscription = interval(1000)
     .subscribe(x => { this.tick(); });
     this.question = this.service.nextQuestion();
->>>>>>> a844a811696c6f52077bd1aecf5411937728201d
   }
-  
+  nextQuestion(): any {
+    this.question = this.service.nextQuestion();
+    
+  }
+
   
 
   tick() {
