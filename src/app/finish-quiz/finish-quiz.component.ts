@@ -9,19 +9,12 @@ import { QuizService } from '../quiz.service';
 export class FinishQuizComponent implements OnInit {
 
   constructor(private service:QuizService) { }
-
-  public questions=[];
-  public answers=[];   
+  public result;
   ngOnInit(): void {
-    this.questions=this.service.questions;
-    this.answers=this.service.getAnswers();
-    console.log(this.service.answers);
-  }
-  question(questionId:number){
-    let question=this.service.getQuestion(questionId);
-    return question;
-
+    this.result = this.service.finalresult();
   }
 
+
+ 
 
 }

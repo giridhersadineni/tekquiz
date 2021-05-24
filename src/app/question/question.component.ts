@@ -11,12 +11,9 @@ import { switchMap } from 'rxjs/operators';
 })
 export class QuestionComponent implements OnInit {
   @Input() question;
-
   public questionid = 0;
   public answerSelected;
-  public savedAnswer={};
-
-  
+  public savedAnswer = {};
   constructor(private service: QuizService, private router: ActivatedRoute) {
     this.answerSelected = 999;
     this.savedAnswer = false;
@@ -24,7 +21,7 @@ export class QuestionComponent implements OnInit {
     this.savedAnswer=this.service.answers.find(q=>q.QnID == this.questionid);
   }
 
-  hasImage() {
+  hasImage(): boolean {
     if (this.question.ImageName == null) {
       // console.log("It has no Image");
       return false;
@@ -33,33 +30,26 @@ export class QuestionComponent implements OnInit {
       return true;
     }
   }
-
-
-  
-  isAnswered() {
-    if (this.answerSelected != 999) {
-      // console.log("It has no Image");
-      return true;
-    } else {
-      // console.log("It has no Image");
-      return false;
-    }
+  isAnswered(): boolean {
+    return  this.service.questionAnswered(this.question.QnID);
   }
 
   ngOnInit(): void {
-    this.questionid = parseInt(this.router.snapshot.paramMap.get('questionid'));
-    this.question = this.service.getQuestion(this.questionid);
+    // this.questionid = parseInt(this.router.snapshot.paramMap.get('questionid'));
+    // this.question = this.service.getQuestion(this.questionid);
   }
 
-  nextQuestion() {
+  nextQuestion(): any {
     this.question = this.service.nextQuestion();
+    this.answerSelected = this.service.getSavedAnswer(this.question.QnID);
   }
 
-  answerQuestion() {
-    if (this.answerSelected == 999) {
+  answerQuestion(): void {
+    const ans = this.answerSelected;
+    if (ans === 999) {
       alert('Please Select an Answer');
     } else {
-      this.service.saveAnswer(this.question.QnID, this.answerSelected);
+      this.service.saveAnswer(this.question.QnID, ans);
     }
   }
 }

@@ -3,15 +3,14 @@
 <div class="row">
     
     <div class="col">
-        <h4>Time Remaining {{ time / 60   | number:"1.0-0" }} Mins {{time % 60 }} Secs</h4>
+        <h5>Time Remaining {{ time / 60   | number:"1.0-0" }} Mins {{time % 60 }} Secs</h5>
     </div>
     <div class="col">
-        <h4>
+        <h5>
            Answered: {{totalanswered}}/  {{totalquestions}} Total Questions
-        </h4>
+        </h5>
     </div>
 </div>
 
-<app-question [(ngModel)]="question" ></app-question>
-
+<app-question [(question)]="question" ></app-question>
 <button (click)="endQuiz()" class="btn red"> Save and Submit</button>

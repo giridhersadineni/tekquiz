@@ -1,8 +1,16 @@
-<div *ngFor="let response of answers">
-    
-    <h1> {{response.questionId}} : {{ question(response.questionId).Qn }} </h1>
-    <h3>Your Answer : {{question(response.questionId).Options[response.response] }}</h3>
-    <h3> Correct Answer : {{question(response.questionId).Options[question(response.questionId).answer] }}</h3>
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="card">
+     <div class="card-content">
 
-    
+         <h3 class="card-title">Result</h3>
+         <p>Your have Scored {{ result.score }}</p>
+         <p>No of Questions Attempted: {{ result.answeredQuestions }}</p>
+         <p>You have answered {{ result.correctanswers }} correctly</p>
+         <p>Total Questions : {{ result.totalquestions }}</p>
+        </div> 
+        <div class="card-action">
+            <a routerLink="/" class="btn green"> Go Back</a>
+        </div>
+  </div>
 </div>
