@@ -22,7 +22,6 @@ export class QuestionComponent implements OnInit {
     this.savedAnswer = false;
     this.question = this.service.nextQuestion();
     this.savedAnswer=this.service.answers.find(q=>q.QnID == this.questionid);
-  
   }
 
   hasImage() {
