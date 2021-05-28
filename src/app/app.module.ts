@@ -20,6 +20,9 @@ import { ManagequestionsComponent } from './managequestions/managequestions.comp
 import { FinishQuizComponent } from './finish-quiz/finish-quiz.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ParticipantComponent } from './participant/participant.component';
+import { TopicFormComponent } from './topic-form/topic-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TopicService } from './services/topic.service';
 
 @NgModule({
   declarations: [
@@ -37,15 +40,17 @@ import { ParticipantComponent } from './participant/participant.component';
     ManagequestionsComponent,
     FinishQuizComponent,
     ParticipantComponent,
+    TopicFormComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
-  providers: [QuizService],
+  providers: [QuizService,TopicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
